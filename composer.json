@@ -1,0 +1,20 @@
+{
+    "name": "msgframework/file",
+    "type": "library",
+    "require": {
+        "symfony/mime": "^6.0",
+        "php": ">=7.2.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Msgframework\\Lib\\File\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MSGroupFM",
+            "email": "admin@msgru.com"
+        }
+    ]
+}
