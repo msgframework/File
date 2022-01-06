@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "533d25ea733e52adb853aefd379e3651",
+    "content-hash": "33ff3f418a16887456ba4ad54b79ab58",
     "packages": [
         {
             "name": "symfony/mime",
@@ -425,7 +425,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2.5"
+        "php": ">=7.4"
     },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"

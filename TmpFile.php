@@ -4,18 +4,12 @@ namespace Msgframework\Lib\File;
 
 class TmpFile extends File
 {
-    public function __construct($filesystem, ?string $filename = null)
+    public function __construct(string $path)
     {
-        if(!$filename) $filename = uniqid('tmp_');
+        parent::__construct($path, false);
 
-        $path = FILES_DIR . "/tmp/{$filename}";
-
-        parent::__construct($path);
-
-        register_shutdown_function(function () use ($filesystem) {
-            if ($filesystem->fileExists($this->getLocalPath())) {
-                $filesystem->delete($this->getLocalPath());
-            }
+        register_shutdown_function(function () {
+            unlink($this->getPath());
         });
     }
 }

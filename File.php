@@ -9,11 +9,10 @@ use Symfony\Component\Mime\MimeTypes;
 class File extends \SplFileInfo
 {
     /**
-     * Constructs a new file from the given path.
-     *
-     * @param string $path      The path to the file
+     * @param string $path
+     * @param bool $checkPath
      */
-    public function __construct(string $path, bool $checkPath)
+    public function __construct(string $path, bool $checkPath = true)
     {
         if ($checkPath && !is_file($path)) {
             throw new FileNotFoundException($path);

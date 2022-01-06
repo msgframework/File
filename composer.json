@@ -3,7 +3,7 @@
     "type": "library",
     "require": {
         "symfony/mime": "^6.0",
-        "php": ">=7.2.5"
+        "php": ">=7.4"
     },
     "license": "MIT",
     "autoload": {
