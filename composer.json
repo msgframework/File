@@ -8,7 +8,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Msgframework\\Lib\\File\\": "src/"
+            "Msgframework\\Lib\\File\\": ""
         }
     },
     "authors": [
