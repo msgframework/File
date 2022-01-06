@@ -2,8 +2,8 @@
     "name": "msgframework/file",
     "type": "library",
     "require": {
-        "symfony/mime": "^6.0",
-        "php": ">=7.4"
+        "php": ">=7.4",
+        "symfony/mime": "^5.4"
     },
     "license": "MIT",
     "autoload": {
