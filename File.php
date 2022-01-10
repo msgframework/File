@@ -28,18 +28,18 @@ class File extends \SplFileInfo
      * This method uses the mime type as guessed by getMimeType()
      * to guess the file extension.
      *
-     * @return string|null The guessed extension or null if it cannot be guessed
+     * @return string The guessed extension or null if it cannot be guessed
      *
      * @see MimeTypes
      * @see getMimeType()
      */
-    public function getExtension(): ?string
+    public function getExtension(): string
     {
         if (!class_exists(MimeTypes::class)) {
             throw new \LogicException('You cannot guess the extension as the Mime component is not installed. Try running "composer require symfony/mime".');
         }
 
-        return MimeTypes::getDefault()->getExtensions($this->getMimeType())[0] ?? null;
+        return MimeTypes::getDefault()->getExtensions($this->getMimeType())[0] ?? 'null';
     }
 
     /**
