@@ -2,14 +2,59 @@
 
 namespace Msgframework\Lib\File;
 
+use MSGFramework\Lib\File\Exception\NoTmpDirFileException;
+
 class TmpFile extends File
 {
-    public function __construct(string $path)
+    /**
+     * Create temporary file
+     * @param string|null $directory
+     * @param string $prefix
+     * @param string $content
+     */
+    public function __construct(?string $directory = null, string $prefix = 'php_tmpfile_', string $content = '')
     {
-        parent::__construct($path, false);
+        $path = tempnam($directory ?? self::getTempDir(), $prefix);
+
+        file_put_contents($path, $content);
+        parent::__construct($path);
 
         register_shutdown_function(function () {
-            unlink($this->getPath());
+            self::remove();
         });
+    }
+
+    public function __destruct()
+    {
+        self::remove();
+    }
+
+    /**
+     * Remove temporary file
+     * @return void
+     */
+    public function remove(): void
+    {
+        unlink($this->getPath());
+    }
+
+    /**
+     * Return path to temporary directory based on system temp dir or ENV
+     * @return string
+     * @throws NoTmpDirFileException
+     */
+    public function getTempDir(): string
+    {
+        if (function_exists('sys_get_temp_dir')) {
+            return sys_get_temp_dir();
+        } elseif (
+            ($tmp = getenv('TMP')) ||
+            ($tmp = getenv('TEMP')) ||
+            ($tmp = getenv('TMPDIR'))
+        ) {
+            return realpath($tmp);
+        } else {
+            throw new NoTmpDirFileException('Temporary files directory not specified');
+        }
     }
 }
