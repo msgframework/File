@@ -35,7 +35,9 @@ class TmpFile extends File
      */
     public function remove(): void
     {
-        unlink($this->getPathname());
+        if(file_exists($this->getPathname())) {
+            unlink($this->getPathname());
+        }
     }
 
     /**
