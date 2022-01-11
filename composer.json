@@ -8,7 +8,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Msgframework\\Lib\\File\\": ""
+            "Msgframework\\Lib\\File\\": "",
+            "MSGFramework\\Lib\\File\\Exception\\": "/Exception"
         }
     },
     "authors": [
