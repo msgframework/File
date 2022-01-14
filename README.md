@@ -8,6 +8,35 @@
 ## About
 This library provides utilities for the file.
 
+## Usage
+
+### Create file
+``` php
+...
+use Msgframework\Lib\File\File;
+
+$file = new File($path);
+```
+
+### Get file extension
+``` php
+...
+$file = new File($path);
+$allow_extensions = array('jpg', 'png');
+
+if (!in_array($extension = $file->getExtension(), $allow_extensions)) {
+    throw new \RuntimeException(sprintf('File extension "%s" not allowed, allow: %s', $extension, implode(", ", $allow_extensions)));
+}
+```
+
+### Get file content
+``` php
+...
+$file = new File($path);
+
+$content = $file->getContent();
+```
+
 ## Installation
 
 You can install this package easily with [Composer](https://getcomposer.org/).
