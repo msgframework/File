@@ -24,6 +24,11 @@ class TmpFile extends File
         });
     }
 
+    public function update()
+    {
+        parent::__construct($this->getPathname());
+    }
+
     public function __destruct()
     {
         self::remove();
